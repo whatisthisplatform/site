@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册表单</title>
+    <style>
+        .form-table {
+            width: 500px;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        .form-table td {
+            padding: 10px;
+            vertical-align: top;
+        }
+        .form-table tr:last-child td {
+            vertical-align: middle;
+        }
+        label {
+            display: inline-block;
+            width: 120px;
+        }
+        input[type="text"], 
+        input[type="password"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 250px;
+            padding: 5px;
+        }
+        textarea {
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <h2>用户注册</h2>
+    <form>
+        <table class="form-table" border="0">
+            <tr>
+                <td><label>用户名称：</label></td>
+                <td><input type="text" name="username" value="zhangsan"></td>
+            </tr>
+            <tr>
+                <td><label>用户密码：</label></td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td><label>用户性别：</label></td>
+                <td>
+                    <input type="radio" name="gender" value="male" id="male">
+                    <label for="male">男</label>
+                    <input type="radio" name="gender" value="female" id="female">
+                    <label for="female">女</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>爱好：</label></td>
+                <td>
+                    <input type="checkbox" id="football" name="hobby" value="足球">
+                    <label for="football">足球</label>
+                    <input type="checkbox" id="basketball" name="hobby" value="篮球">
+                    <label for="basketball">篮球</label><br>
+                    <input type="checkbox" id="lol" name="hobby" value="LOL">
+                    <label for="lol">LOL</label>
+                    <input type="checkbox" id="drama" name="hobby" value="韩剧">
+                    <label for="drama">韩剧</label><br>
+                    <input type="checkbox" id="game" name="hobby" value="王者荣耀">
+                    <label for="game">王者荣耀</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>邮箱：</label></td>
+                <td>
+                    <input type="email" name="email" placeholder="请输入您的邮箱">
+                </td>
+            </tr>
+            <tr>
+                <td><label>用户头像：</label></td>
+                <td>
+                    <input type="file" name="avatar">
+                </td>
+            </tr>
+            <tr>
+                <td><label>家庭住址：</label></td>
+                <td>
+                    <select name="address">
+                        <option value="陕西">陕西</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>建议或意见：</label></td>
+                <td>
+                    <textarea name="suggestion" placeholder="您的建议或者意见"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="提交注册">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
