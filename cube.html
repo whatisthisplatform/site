@@ -1,0 +1,46 @@
+<html>
+<head>
+  <style>
+    body {
+      background: #EEE;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .cube {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      transform: rotateX(-30deg) rotateY(45deg);
+      transform-style: preserve-3d;
+    }
+    .face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid #FFF;
+    }
+    .top {
+      background: #E74C3C;
+      transform: rotateX(90deg) translateZ(50px);
+    }
+    .left {
+      background: #9B59B6;
+      transform: rotateY(-90deg) translateZ(50px);
+    }
+    .right {
+      background: #27AE60;
+      transform: rotateY(0deg) translateZ(50px);
+    }
+  </style>
+</head>
+<body>
+  <div class="cube">
+    <div class="face top"></div>
+    <div class="face left"></div>
+    <div class="face right"></div>
+  </div>
+</body>
+</html>
