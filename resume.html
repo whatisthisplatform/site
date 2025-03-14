@@ -4,83 +4,152 @@
     <meta charset="UTF-8">
     <title>简小丽 - 个人简历</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 30px; }
-        table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #f2f2f2; }
-        img { max-width: 150px; margin: 20px 0; }
-        h2 { color: #333; border-bottom: 2px solid #666; padding-bottom: 8px; }
+        /* 设定背景 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 椭圆动态背景 */
+        .ellipse {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: moveEllipse 8s infinite alternate ease-in-out;
+        }
+
+        .ellipse1 { top: 10%; left: 10%; }
+        .ellipse2 { top: 50%; left: 60%; width: 250px; height: 150px; }
+        .ellipse3 { top: 80%; left: 30%; width: 200px; height: 100px; }
+
+        @keyframes moveEllipse {
+            from { transform: translateY(-20px) translateX(-10px); }
+            to { transform: translateY(20px) translateX(10px); }
+        }
+
+        /* 个人简历内容 */
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #666;
+            padding-bottom: 8px;
+        }
+
+        img {
+            max-width: 150px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-    <h1>个人简历</h1>
-    
-    <img src="profile.photo.jpg" alt="简小丽证件照">
 
-    <h2>基本信息</h2>
-    <table>
-        <tr>
-            <th>姓名</th>
-            <td>简小丽</td>
-            <th>年龄</th>
-            <td>26</td>
-        </tr>
-        <tr>
-            <th>性别</th>
-            <td>女</td>
-            <th>婚姻状况</th>
-            <td>已婚</td>
-        </tr>
-        <tr>
-            <th>地址</th>
-            <td colspan="3">湖南长沙岳麓区</td>
-        </tr>
-        <tr>
-            <th>电话</th>
-            <td colspan="3">135-0000-0000</td>
-        </tr>
-        <tr>
-            <th>求职意向</th>
-            <td colspan="3">区域经理 / 社区服务站慢病管理员</td>
-        </tr>
-    </table>
+    <!-- 背景椭圆 -->
+    <div class="ellipse ellipse1"></div>
+    <div class="ellipse ellipse2"></div>
+    <div class="ellipse ellipse3"></div>
 
-    <h2>工作经历</h2>
-    <h3>社区服务站慢病管理员</h3>
-    <ul>
-        <li>负责为客户进行体检并解读体检结果</li>
-        <li>评估客户健康状况及疾病风险，提供健康咨询与指导</li>
-        <li>执行糖尿病、高血压患者检测工作</li>
-    </ul>
+    <div class="container">
+        <h1>个人简历</h1>
 
-    <h3>药店店员（四年工作经验）</h3>
-    <ul>
-        <li>接待顾客咨询，分析需求并完成销售目标</li>
-        <li>管理货品销售记录、盘点及账目核对</li>
-        <li>负责商品验收、陈列、补货及防损管理</li>
-        <li>维护责任区域卫生清洁</li>
-        <li>分解执行公司销售指标任务</li>
-        <li>熟练掌握商品价格、产地等信息</li>
-    </ul>
+        <img src="profile.photo.jpg" alt="简小丽证件照">
 
-    <h2>教育经历</h2>
-    <ul>
-        <li>中专学历（正在攻读成人高考）</li>
-    </ul>
+        <h2>基本信息</h2>
+        <table>
+            <tr>
+                <th>姓名</th>
+                <td>简小丽</td>
+                <th>年龄</th>
+                <td>26</td>
+            </tr>
+            <tr>
+                <th>性别</th>
+                <td>女</td>
+                <th>婚姻状况</th>
+                <td>已婚</td>
+            </tr>
+            <tr>
+                <th>地址</th>
+                <td colspan="3">湖南长沙岳麓区</td>
+            </tr>
+            <tr>
+                <th>电话</th>
+                <td colspan="3">135-0000-0000</td>
+            </tr>
+            <tr>
+                <th>求职意向</th>
+                <td colspan="3">区域经理 / 社区服务站慢病管理员</td>
+            </tr>
+        </table>
 
-    <h2>社会关系</h2>
-    <ul>
-        <li>家人从事教育行业（教师/校领导）</li>
-        <li>配偶拥有广泛商业人脉资源</li>
-    </ul>
+        <h2>工作经历</h2>
+        <h3>社区服务站慢病管理员</h3>
+        <ul>
+            <li>负责为客户进行体检并解读体检结果</li>
+            <li>评估客户健康状况及疾病风险，提供健康咨询与指导</li>
+            <li>执行糖尿病、高血压患者检测工作</li>
+        </ul>
 
-    <h2>自我评价</h2>
-    <ul>
-        <li>具备市场调研分析能力，熟悉本地市场环境</li>
-        <li>擅长产品、人员及价格管理</li>
-        <li>掌握基础营销与品牌管理知识</li>
-        <li>具备市场预测、策略规划能力</li>
-        <li>高效执行公司营销方案</li>
-    </ul>
+        <h3>药店店员（四年工作经验）</h3>
+        <ul>
+            <li>接待顾客咨询，分析需求并完成销售目标</li>
+            <li>管理货品销售记录、盘点及账目核对</li>
+            <li>负责商品验收、陈列、补货及防损管理</li>
+            <li>维护责任区域卫生清洁</li>
+            <li>分解执行公司销售指标任务</li>
+            <li>熟练掌握商品价格、产地等信息</li>
+        </ul>
+
+        <h2>教育经历</h2>
+        <ul>
+            <li>中专学历（正在攻读成人高考）</li>
+        </ul>
+
+        <h2>社会关系</h2>
+        <ul>
+            <li>家人从事教育行业（教师/校领导）</li>
+            <li>配偶拥有广泛商业人脉资源</li>
+        </ul>
+
+        <h2>自我评价</h2>
+        <ul>
+            <li>具备市场调研分析能力，熟悉本地市场环境</li>
+            <li>擅长产品、人员及价格管理</li>
+            <li>掌握基础营销与品牌管理知识</li>
+            <li>具备市场预测、策略规划能力</li>
+            <li>高效执行公司营销方案</li>
+        </ul>
+    </div>
 </body>
 </html>
