@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>二次方程求解器</title>
+    <script>
+        // 第一步：提示用户输入系数 a、b、c
+        let a = prompt("请输入系数 a：");
+        let b = prompt("请输入系数 b：");
+        let c = prompt("请输入系数 c：");
+
+        // 第二步：将输入转换为数字
+        a = parseFloat(a);
+        b = parseFloat(b);
+        c = parseFloat(c);
+
+        // 检查 a 是否为 0（避免除以 0）
+        if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) {
+            alert("输入无效！请确保 a ≠ 0，且输入的是有效数字。");
+            console.log("输入无效！请确保 a ≠ 0，且输入的是有效数字。");
+        } else {
+            // 第三步：计算判别式 delta = b² - 4ac
+            let delta = b * b - 4 * a * c;
+
+            // 第四步：计算方程解
+            if (delta > 0) {
+                // 两个不同的实根
+                let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                alert("方程有两个实数解：x1 = " + x1 + ", x2 = " + x2);
+                console.log("方程有两个实数解：x1 = " + x1 + ", x2 = " + x2);
+            } else if (delta === 0) {
+                // 一个实根（重根）
+                let x = -b / (2 * a);
+                alert("方程有一个重根：x = " + x);
+                console.log("方程有一个重根：x = " + x);
+            } else {
+                // 复数根
+                let realPart = (-b / (2 * a)).toFixed(2);
+                let imaginaryPart = (Math.sqrt(-delta) / (2 * a)).toFixed(2);
+                alert("方程有两个复数解：x1 = " + realPart + " + " + imaginaryPart + "i, x2 = " + realPart + " - " + imaginaryPart + "i");
+                console.log("方程有两个复数解：x1 = " + realPart + " + " + imaginaryPart + "i, x2 = " + realPart + " - " + imaginaryPart + "i");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>请在浏览器控制台（F12 → Console）查看计算结果。</h2>
+</body>
+</html>
