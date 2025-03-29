@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>二次方程求解器</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Equation Solver</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        input { width: 50px; text-align: center; }
+        .solution { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Quadratic Equation Solver</h2>
+    <input id="a" type="number" placeholder="a"> x² +
+    <input id="b" type="number" placeholder="b"> x +
+    <input id="c" type="number" placeholder="c"> = 0
+    <button onclick="solveEquation()">Solve</button>
+    <div class="solution" id="solution"></div>
+
     <script>
-        // 第一步：提示用户输入系数 a、b、c
-        let a = prompt("请输入系数 a：");
-        let b = prompt("请输入系数 b：");
-        let c = prompt("请输入系数 c：");
-
-        // 第二步：将输入转换为数字
-        a = parseFloat(a);
-        b = parseFloat(b);
-        c = parseFloat(c);
-
-        // 检查 a 是否为 0（避免除以 0）
-        if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) {
-            alert("输入无效！请确保 a ≠ 0，且输入的是有效数字。");
-            console.log("输入无效！请确保 a ≠ 0，且输入的是有效数字。");
-        } else {
-            // 第三步：计算判别式 delta = b² - 4ac
+        function solveEquation() {
+            let a = parseFloat(document.getElementById("a").value);
+            let b = parseFloat(document.getElementById("b").value);
+            let c = parseFloat(document.getElementById("c").value);
+            let solutionDiv = document.getElementById("solution");
+            
+            if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) {
+                solutionDiv.innerHTML = "Invalid input! Ensure a ≠ 0 and all inputs are numbers.";
+                return;
+            }
+            
             let delta = b * b - 4 * a * c;
-
-            // 第四步：计算方程解
             if (delta > 0) {
-                // 两个不同的实根
                 let x1 = (-b + Math.sqrt(delta)) / (2 * a);
                 let x2 = (-b - Math.sqrt(delta)) / (2 * a);
-                alert("方程有两个实数解：x1 = " + x1 + ", x2 = " + x2);
-                console.log("方程有两个实数解：x1 = " + x1 + ", x2 = " + x2);
+                solutionDiv.innerHTML = `Real solutions: x₁ = ${x1.toFixed(2)}, x₂ = ${x2.toFixed(2)}`;
             } else if (delta === 0) {
-                // 一个实根（重根）
                 let x = -b / (2 * a);
-                alert("方程有一个重根：x = " + x);
-                console.log("方程有一个重根：x = " + x);
+                solutionDiv.innerHTML = `One real solution: x = ${x.toFixed(2)}`;
             } else {
-                // 复数根
                 let realPart = (-b / (2 * a)).toFixed(2);
                 let imaginaryPart = (Math.sqrt(-delta) / (2 * a)).toFixed(2);
-                alert("方程有两个复数解：x1 = " + realPart + " + " + imaginaryPart + "i, x2 = " + realPart + " - " + imaginaryPart + "i");
-                console.log("方程有两个复数解：x1 = " + realPart + " + " + imaginaryPart + "i, x2 = " + realPart + " - " + imaginaryPart + "i");
+                solutionDiv.innerHTML = `Complex solutions: x₁ = ${realPart} + ${imaginaryPart}i, x₂ = ${realPart} - ${imaginaryPart}i`;
             }
         }
     </script>
-</head>
-<body>
-    <h2>请在浏览器控制台（F12 → Console）查看计算结果。</h2>
 </body>
 </html>
