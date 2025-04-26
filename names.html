@@ -1,15 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Names</title>
+</head>
+<body>
+
+<table border="1">
+  <tr><th>Name</th></tr>
+  <tr><td>Tom Hanks</td></tr>
+  <tr><td>Will Smith</td></tr>
+  <tr><td>Angelina Jolie</td></tr>
+  <tr><td>Leonardo DiCaprio</td></tr>
+  <tr><td>Jennifer Lawrence</td></tr>
+</table>
+
+<script>
 onload = sortbylastname;
 
 let sortbylastname = function() {
   const tbl = document.getElementsByTagName("table")[0];
   const rowsArray = [];
 
-  // 从第1行开始，跳过表头
   for (let i = 1; i < tbl.rows.length; i++) {
     rowsArray.push(tbl.rows[i]);
   }
 
-  // 按名字排序
   rowsArray.sort((rowA, rowB) => {
     let nameA = rowA.cells[0].innerHTML.trim().toLowerCase();
     let nameB = rowB.cells[0].innerHTML.trim().toLowerCase();
@@ -18,13 +34,15 @@ let sortbylastname = function() {
     return 0;
   });
 
-  // 移除原来的所有数据行
   while (tbl.rows.length > 1) {
     tbl.deleteRow(1);
   }
 
-  // 重新添加排序后的行
   for (let row of rowsArray) {
     tbl.appendChild(row);
   }
 }
+</script>
+
+</body>
+</html>
