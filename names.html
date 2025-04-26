@@ -1,0 +1,30 @@
+onload = sortbylastname;
+
+let sortbylastname = function() {
+  const tbl = document.getElementsByTagName("table")[0];
+  const rowsArray = [];
+
+  // 从第1行开始，跳过表头
+  for (let i = 1; i < tbl.rows.length; i++) {
+    rowsArray.push(tbl.rows[i]);
+  }
+
+  // 按名字排序
+  rowsArray.sort((rowA, rowB) => {
+    let nameA = rowA.cells[0].innerHTML.trim().toLowerCase();
+    let nameB = rowB.cells[0].innerHTML.trim().toLowerCase();
+    if (nameA < nameB) return -1;
+    if (nameA > nameB) return 1;
+    return 0;
+  });
+
+  // 移除原来的所有数据行
+  while (tbl.rows.length > 1) {
+    tbl.deleteRow(1);
+  }
+
+  // 重新添加排序后的行
+  for (let row of rowsArray) {
+    tbl.appendChild(row);
+  }
+}
