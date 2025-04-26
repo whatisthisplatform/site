@@ -1,59 +1,63 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    @keyframes float {
-      0% { transform: translateY(700px); }
-      25% { transform: translateY(500px); }
-      50% { transform: translateY(300px); }
-      75% { transform: translateY(500px); }
-      100% { transform: translateY(700px); }
-    }
-  </style>
-</head>
-<body>
-  <script>
-    class Balloon {
-      constructor(id, color, diameter, speed) {
-        this.id = id;
-        this.color = color;
-        this.diameter = diameter;
-        this.speed = speed;
-      }
+class Balloon {
+  constructor(id, color, diameter, speed) {
+    this.id = id;
+    this.color = color;
+    this.diameter = diameter;
+    this.speed = speed;
+    this.growInterval = null;
+  }
 
-      make() {
-        const dv = document.createElement('div');
-        dv.id = 'd' + this.id;
-        dv.style.cssText = `
-          width: ${this.diameter}px;
-          height: ${this.diameter}px;
-          border-radius: ${this.diameter / 2}px;
-          background-color: ${this.color};
-          position: absolute;
-          transform: translateY(700px);
-          left: ${Math.random() * (window.innerWidth - this.diameter)}px;
-        `;
-        document.body.appendChild(dv);
-      }
+  make() {
+    const dv = document.createElement('div');
+    dv.id = 'd' + this.id;
+    dv.style.cssText = `
+      width: ${this.diameter}px;
+      height: ${this.diameter}px;
+      border-radius: ${this.diameter / 2}px;
+      background-color: ${this.color};
+      position: absolute;
+      transform: translateY(700px);
+      left: ${Math.random() * (window.innerWidth - this.diameter)}px;
+    `;
+    document.body.appendChild(dv);
+  }
 
-      float() {
-        const dv = document.getElementById('d' + this.id);
-        dv.style.animationName = "float";
-        dv.style.animationDuration = (10 / this.speed) + 's';
-        dv.style.animationIterationCount = "infinite";
-        dv.style.animationTimingFunction = "ease-in-out";
-      }
-    }
+  float() {
+    const dv = document.getElementById('d' + this.id);
+    dv.style.animationName = "float";
+    dv.style.animationDuration = (10 / this.speed) + 's';
+    dv.style.animationIterationCount = "infinite";
+    dv.style.animationTimingFunction = "ease-in-out";
 
-    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'cyan', 'magenta', 'lime'];
-    for (let i = 0; i < 30; i++) {
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const diameter = 50 + Math.random() * 100;
-      const speed = 0.5 + Math.random();
-      const b = new Balloon(i, color, diameter, speed);
-      b.make();
-      setTimeout(() => b.float(), i * 200);
-    }
-  </script>
-</body>
-</html>
+    // 让气球慢慢变大
+    this.growInterval = setInterval(() => {
+      let width = parseFloat(dv.style.width);
+      let height = parseFloat(dv.style.height);
+      width += 0.2;
+      height += 0.2;
+      dv.style.width = width + "px";
+      dv.style.height = height + "px";
+      dv.style.borderRadius = (width / 2) + "px";
+
+      // 如果上升到一定高度，爆炸
+      const rect = dv.getBoundingClientRect();
+      if (rect.top <= 300) {
+        clearInterval(this.growInterval);
+        setTimeout(() => {
+          dv.remove();
+        }, this.id * 200); // 气球一个一个爆炸
+      }
+    }, 100);
+  }
+}
+
+const colors = ['red', 'orange', 'yellow', 'green', 'black', 'blue', 'purple'];
+
+for (let i = 0; i < 30; i++) {
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  const diameter = 50 + Math.random() * 100;
+  const speed = 0.5 + Math.random();
+  const b = new Balloon(i, color, diameter, speed);
+  b.make();
+  setTimeout(() => b.float(), i * 200);
+}
