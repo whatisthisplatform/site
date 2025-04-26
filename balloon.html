@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flying Balloons</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: skyblue;
+    }
+    @keyframes float {
+      0% { transform: translateY(700px); }
+      25% { transform: translateY(500px); }
+      50% { transform: translateY(300px); }
+      75% { transform: translateY(500px); }
+      100% { transform: translateY(700px); }
+    }
+  </style>
+</head>
+<body>
+
+<script>
 class Balloon {
   constructor(id, color, diameter, speed) {
     this.id = id;
@@ -29,7 +52,6 @@ class Balloon {
     dv.style.animationIterationCount = "infinite";
     dv.style.animationTimingFunction = "ease-in-out";
 
-    // 让气球慢慢变大
     this.growInterval = setInterval(() => {
       let width = parseFloat(dv.style.width);
       let height = parseFloat(dv.style.height);
@@ -39,13 +61,12 @@ class Balloon {
       dv.style.height = height + "px";
       dv.style.borderRadius = (width / 2) + "px";
 
-      // 如果上升到一定高度，爆炸
       const rect = dv.getBoundingClientRect();
       if (rect.top <= 300) {
         clearInterval(this.growInterval);
         setTimeout(() => {
           dv.remove();
-        }, this.id * 200); // 气球一个一个爆炸
+        }, this.id * 200); // 依次爆炸
       }
     }, 100);
   }
@@ -61,3 +82,7 @@ for (let i = 0; i < 30; i++) {
   b.make();
   setTimeout(() => b.float(), i * 200);
 }
+</script>
+
+</body>
+</html>
